@@ -7,7 +7,7 @@ export function getBaseUrl() {
   console.log(match);
   if (match) {
     const group = match[1];
-    return `https://webshop-2025-${group}-be.vercel.app/`;
+    return `https://webshop-2025-be-g9.vercel.app/api/products`;
   }
   return "http://localhost:3000/";
 }
