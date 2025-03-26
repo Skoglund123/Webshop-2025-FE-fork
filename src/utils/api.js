@@ -45,7 +45,7 @@
 //axios
 
 export async function fetchProducts() {
-  const url = 'http://localhost:5002/produkter/';
+  const url = 'http://localhost:5003/product';
   try {
     const response = await axios.get(url);
     return response.data;

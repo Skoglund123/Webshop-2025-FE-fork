@@ -1,25 +1,25 @@
 {
-    "produkter": [
+    "product": [
       {
-        "namn": "Youghurt Vanilj",
-        "pris": 59.50,
-        "beskrivning": "God Youghurt",
-        "kategori": "Mejeri",
-        "varumärke": "Arla"
+        "name": "Youghurt Vanilj",
+        "price": 59.50,
+        "description": "God Youghurt",
+        "category": "Mejeri",
+        "brand": "Arla"
       }, 
       {
-        "namn": "Gurka",
-        "pris": 24.50,
-        "beskrivning": "Grönsak",
-        "kategori": "Frukt & Grönt",
-        "varumärke": "Gurk Burk"
+        "name": "Gurka",
+        "price": 24.50,
+        "description": "Grönsak",
+        "category": "Frukt & Grönt",
+        "brand": "Gurk Burk"
       },
       {
-        "namn": "Ahlgrens Bilar",
-        "pris": 99.50,
-        "beskrivning": "Godis",
-        "kategori": "Godis",
-        "varumärke": "Ahlgrens"
+        "name": "Ahlgrens Bilar",
+        "price": 99.50,
+        "description": "Godis",
+        "category": "Godis",
+        "brand": "Ahlgrens"
       }
     ]
-  }
+}
