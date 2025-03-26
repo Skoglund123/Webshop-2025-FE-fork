@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hakim Livs</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type=module src="./src/scripts/index.js" defer></script>
+    <script type="module" src="./src/scripts/index.js" defer></script>
   </head>
   <body>
-
     <!-- HEADER -->
     <header class="site-header">
       <nav>
@@ -20,19 +21,29 @@
         </ul>
       </nav>
     </header>
-
-    <!-- PRODUCT CATEGORIES -->
-    <aside>
-      <nav>
-
-      </nav>
-    </aside>
-
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
-      <h1>Welcome to Hakim Livs</h1>
+  
+      <!-- SIDEBAR -->
+      <aside>
+        <nav>
+          <!-- Kategorier laddas dynamiskt här -->
+        </nav>
+      </aside>
+  
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
+        <h1>Welcome to Hakim Livs</h1>
+        <div id="sorting">
+          <label for="sort-select">Sortera efter: </label>
+          <select id="sort-select">
+            <option value="">-- Välj sortering --</option>
+            <option value="price-asc">Pris: Låg till hög</option>
+            <option value="price-desc">Pris: Hög till låg</option>
+            <option value="name-asc">Namn: A till Ö</option>
+            <option value="name-desc">Namn: Ö till A</option>
+          </select>
+        </div>
         <div id="products"></div>
-    </main>
+      </main>
 
     <!-- FOOTER -->
     <footer class="site-footer">
@@ -45,4 +56,5 @@
         </div>
       </div>
     </footer>
+  </body>
 </html>

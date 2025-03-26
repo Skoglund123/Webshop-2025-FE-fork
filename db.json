@@ -20,6 +20,20 @@
         "description": "Godis",
         "category": "Godis",
         "brand": "Ahlgrens"
+      }, 
+      {
+        "name": "Mjölk",
+        "price": 34.50,
+        "description": "Laktosfri mjölk",
+        "category": "Mejeri",
+        "brand": "Arla"
+      }, 
+      {
+        "name": "Paprika",
+        "price": 29.50,
+        "description": "Röd paprika",
+        "category": "Frukt & Grönt",
+        "brand": "Paprico"
       }
     ]
 }
