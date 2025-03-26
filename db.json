@@ -1,0 +1,25 @@
+{
+    "produkter": [
+      {
+        "namn": "Youghurt Vanilj",
+        "pris": 59.50,
+        "beskrivning": "God Youghurt",
+        "kategori": "Mejeri",
+        "varumärke": "Arla"
+      }, 
+      {
+        "namn": "Gurka",
+        "pris": 24.50,
+        "beskrivning": "Grönsak",
+        "kategori": "Frukt & Grönt",
+        "varumärke": "Gurk Burk"
+      },
+      {
+        "namn": "Ahlgrens Bilar",
+        "pris": 99.50,
+        "beskrivning": "Godis",
+        "kategori": "Godis",
+        "varumärke": "Ahlgrens"
+      }
+    ]
+  }

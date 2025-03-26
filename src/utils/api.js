@@ -45,7 +45,7 @@
 //axios
 
 export async function fetchProducts() {
-  const url = 'https://webshop-2025-be-g9.vercel.app/api/products';
+  const url = 'http://localhost:5002/produkter/';
   try {
     const response = await axios.get(url);
     return response.data;
@@ -54,3 +54,6 @@ export async function fetchProducts() {
     return [];
   }
 }
+
+
+// https://webshop-2025-be-g9.vercel.app/api/products
