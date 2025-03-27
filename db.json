@@ -1,39 +1,396 @@
 {
-    "product": [
-      {
-        "name": "Youghurt Vanilj",
-        "price": 59.50,
-        "description": "God Youghurt",
-        "category": "Mejeri",
-        "brand": "Arla"
-      }, 
-      {
-        "name": "Gurka",
-        "price": 24.50,
-        "description": "Grönsak",
-        "category": "Frukt & Grönt",
-        "brand": "Gurk Burk"
-      },
-      {
-        "name": "Ahlgrens Bilar",
-        "price": 99.50,
-        "description": "Godis",
-        "category": "Godis",
-        "brand": "Ahlgrens"
-      }, 
-      {
-        "name": "Mjölk",
-        "price": 34.50,
-        "description": "Laktosfri mjölk",
-        "category": "Mejeri",
-        "brand": "Arla"
-      }, 
-      {
-        "name": "Paprika",
-        "price": 29.50,
-        "description": "Röd paprika",
-        "category": "Frukt & Grönt",
-        "brand": "Paprico"
-      }
-    ]
+  "product": [
+    {
+      "name": "Youghurt Vanilj",
+      "price": 59.50,
+      "description": "God Youghurt",
+      "category": "Mejeri",
+      "brand": "Arla"
+    },
+    {
+      "name": "Mjölk",
+      "price": 34.50,
+      "description": "Laktosfri mjölk",
+      "category": "Mejeri",
+      "brand": "Arla"
+    },
+    {
+      "name": "Ost",
+      "price": 79.00,
+      "description": "Kryddig hårdost",
+      "category": "Mejeri",
+      "brand": "Arla"
+    },
+    {
+      "name": "Smör",
+      "price": 45.00,
+      "description": "Smör från Sverige",
+      "category": "Mejeri",
+      "brand": "Lurpak"
+    },
+    {
+      "name": "Grädde",
+      "price": 29.00,
+      "description": "Vispgrädde",
+      "category": "Mejeri",
+      "brand": "Arla"
+    },
+    {
+      "name": "Gurka",
+      "price": 24.50,
+      "description": "Grönsak",
+      "category": "Frukt & Grönt",
+      "brand": "Gurk Burk"
+    },
+    {
+      "name": "Paprika",
+      "price": 29.50,
+      "description": "Röd paprika",
+      "category": "Frukt & Grönt",
+      "brand": "Paprico"
+    },
+    {
+      "name": "Tomater",
+      "price": 35.00,
+      "description": "Färska tomater",
+      "category": "Frukt & Grönt",
+      "brand": "Fruktland"
+    },
+    {
+      "name": "Äpplen",
+      "price": 29.00,
+      "description": "Gröna äpplen",
+      "category": "Frukt & Grönt",
+      "brand": "Naturfrukt"
+    },
+    {
+      "name": "Lök",
+      "price": 19.50,
+      "description": "Lök i olika färger",
+      "category": "Frukt & Grönt",
+      "brand": "Fruktlandet"
+    },
+    {
+      "name": "Ahlgrens Bilar",
+      "price": 99.50,
+      "description": "Godis",
+      "category": "Godis",
+      "brand": "Ahlgrens"
+    },
+    {
+      "name": "Marabou Mjölkchoklad",
+      "price": 35.00,
+      "description": "Mjölkchoklad",
+      "category": "Godis",
+      "brand": "Marabou"
+    },
+    {
+      "name": "Daim",
+      "price": 29.00,
+      "description": "Choklad med knäck",
+      "category": "Godis",
+      "brand": "Daim"
+    },
+    {
+      "name": "Lösgodis",
+      "price": 59.00,
+      "description": "Blandat godis",
+      "category": "Godis",
+      "brand": "Godisland"
+    },
+    {
+      "name": "Snickers",
+      "price": 35.00,
+      "description": "Chokladbar",
+      "category": "Godis",
+      "brand": "Mars"
+    },
+    {
+      "name": "Coca Cola",
+      "price": 22.00,
+      "description": "Coladryck",
+      "category": "Dryck",
+      "brand": "Coca Cola"
+    },
+    {
+      "name": "Fanta",
+      "price": 20.50,
+      "description": "Apelsindryck",
+      "category": "Dryck",
+      "brand": "Coca Cola"
+    },
+    {
+      "name": "Sprite",
+      "price": 18.00,
+      "description": "Citrondryck",
+      "category": "Dryck",
+      "brand": "Coca Cola"
+    },
+    {
+      "name": "Pepsi",
+      "price": 22.00,
+      "description": "Coladryck",
+      "category": "Dryck",
+      "brand": "PepsiCo"
+    },
+    {
+      "name": "Vatten",
+      "price": 15.00,
+      "description": "Kolsyrat vatten",
+      "category": "Dryck",
+      "brand": "Ramlösa"
+    },
+    {
+      "name": "Fiskpinnar",
+      "price": 45.00,
+      "description": "Fiskpinnar i packning",
+      "category": "Frysvaror",
+      "brand": "Findus"
+    },
+    {
+      "name": "Frysta Grönsaker",
+      "price": 30.00,
+      "description": "Blandade frysta grönsaker",
+      "category": "Frysvaror",
+      "brand": "Ica"
+    },
+    {
+      "name": "Pizza Margherita",
+      "price": 69.50,
+      "description": "Fryst pizza",
+      "category": "Frysvaror",
+      "brand": "Svea"
+    },
+    {
+      "name": "Korv",
+      "price": 55.00,
+      "description": "Frysta korvar",
+      "category": "Frysvaror",
+      "brand": "Lidl"
+    },
+    {
+      "name": "Päron",
+      "price": 29.50,
+      "description": "Färska päron",
+      "category": "Frukt & Grönt",
+      "brand": "Fruktland"
+    },
+    {
+      "name": "Chili",
+      "price": 19.00,
+      "description": "Stark chili",
+      "category": "Frukt & Grönt",
+      "brand": "Spicy"
+    },
+    {
+      "name": "Bananer",
+      "price": 29.00,
+      "description": "Gula bananer",
+      "category": "Frukt & Grönt",
+      "brand": "Tropico"
+    },
+    {
+      "name": "Kaffebönor",
+      "price": 85.00,
+      "description": "Kaffebönor av hög kvalitet",
+      "category": "Kaffe & Te",
+      "brand": "Gevalia"
+    },
+    {
+      "name": "Te",
+      "price": 35.00,
+      "description": "Svart te",
+      "category": "Kaffe & Te",
+      "brand": "Lipton"
+    },
+    {
+      "name": "Espresso",
+      "price": 59.00,
+      "description": "Espresso kaffe",
+      "category": "Kaffe & Te",
+      "brand": "Lavazza"
+    },
+    {
+      "name": "Kaffekapslar",
+      "price": 60.00,
+      "description": "Kaffekapslar för maskin",
+      "category": "Kaffe & Te",
+      "brand": "Nespresso"
+    },
+    {
+      "name": "Smaksatt Kaffe",
+      "price": 75.00,
+      "description": "Kaffe med smaker",
+      "category": "Kaffe & Te",
+      "brand": "Starbucks"
+    },
+    {
+      "name": "Tändstickor",
+      "price": 15.00,
+      "description": "Tändstickor för användning hemma",
+      "category": "Hem & Hushåll",
+      "brand": "Ikea"
+    },
+    {
+      "name": "Tvättmedel",
+      "price": 79.00,
+      "description": "Tvättmedel för känslig hud",
+      "category": "Hem & Hushåll",
+      "brand": "Omo"
+    },
+    {
+      "name": "Kaffekoppar",
+      "price": 39.00,
+      "description": "Set med kaffekoppar",
+      "category": "Hem & Hushåll",
+      "brand": "Ikea"
+    },
+    {
+      "name": "Mopp",
+      "price": 199.00,
+      "description": "Mopp med hink",
+      "category": "Hem & Hushåll",
+      "brand": "Vileda"
+    },
+    {
+      "name": "Diskmedel",
+      "price": 29.00,
+      "description": "Diskmedel för alla typer av disk",
+      "category": "Hem & Hushåll",
+      "brand": "Ajax"
+    },
+    {
+      "name": "Hygienhandskar",
+      "price": 25.00,
+      "description": "Engångshandskar för rengöring",
+      "category": "Hem & Hushåll",
+      "brand": "Ikea"
+    },
+    {
+      "name": "Badrumsmatta",
+      "price": 99.00,
+      "description": "Mjuk badrumsmatta",
+      "category": "Hem & Hushåll",
+      "brand": "Ikea"
+    },
+    {
+      "name": "Schampo",
+      "price": 49.50,
+      "description": "Schampo för torrt hår",
+      "category": "Skönhet & Hälsa",
+      "brand": "Head & Shoulders"
+    },
+    {
+      "name": "Hårbalsam",
+      "price": 45.00,
+      "description": "Balsam för att återfukta håret",
+      "category": "Skönhet & Hälsa",
+      "brand": "Pantene"
+    },
+    {
+      "name": "Tandkräm",
+      "price": 29.00,
+      "description": "Tandkräm med vitare effekt",
+      "category": "Skönhet & Hälsa",
+      "brand": "Sensodyne"
+    },
+    {
+      "name": "Deodorant",
+      "price": 25.00,
+      "description": "Deodorant för hela dagen",
+      "category": "Skönhet & Hälsa",
+      "brand": "Dove"
+    },
+    {
+      "name": "Solkräm",
+      "price": 89.00,
+      "description": "Solskyddskräm för ansiktet",
+      "category": "Skönhet & Hälsa",
+      "brand": "Nivea"
+    },
+    {
+      "name": "Ansiktsmask",
+      "price": 79.00,
+      "description": "Hudsammandragande ansiktsmask",
+      "category": "Skönhet & Hälsa",
+      "brand": "L'Oréal"
+    },
+    {
+      "name": "Färgad Läppbalsam",
+      "price": 49.00,
+      "description": "Läppbalsam med färg",
+      "category": "Skönhet & Hälsa",
+      "brand": "Burt's Bees"
+    },
+    {
+      "name": "Rengöringsmedel",
+      "price": 59.50,
+      "description": "Rengöringsmedel för känslig hud",
+      "category": "Skönhet & Hälsa",
+      "brand": "Clinique"
+    },
+    {
+      "name": "Färsk Lax",
+      "price": 169.00,
+      "description": "Färsk lax",
+      "category": "Kött & Fisk",
+      "brand": "Ica"
+    },
+    {
+      "name": "Kycklingbröst",
+      "price": 79.00,
+      "description": "Färska kycklingbröst",
+      "category": "Kött & Fisk",
+      "brand": "Lidl"
+    },
+    {
+      "name": "Nötfärs",
+      "price": 129.00,
+      "description": "Färs av nötkött",
+      "category": "Kött & Fisk",
+      "brand": "Ica"
+    },
+    {
+      "name": "Lammkött",
+      "price": 159.00,
+      "description": "Färskt lammkött",
+      "category": "Kött & Fisk",
+      "brand": "Lidl"
+    },
+    {
+      "name": "Pasta",
+      "price": 22.50,
+      "description": "Spaghetti",
+      "category": "Torkade varor",
+      "brand": "Barilla"
+    },
+    {
+      "name": "Ris",
+      "price": 35.00,
+      "description": "Basmatiris",
+      "category": "Torkade varor",
+      "brand": "Uncle Ben's"
+    },
+    {
+      "name": "Krossade Tomater",
+      "price": 19.50,
+      "description": "Tomater på burk",
+      "category": "Torkade varor",
+      "brand": "Felix"
+    },
+    {
+      "name": "Potatis",
+      "price": 29.00,
+      "description": "Frysta potatisar",
+      "category": "Torkade varor",
+      "brand": "Findus"
+    },
+    {
+      "name": "Havregryn",
+      "price": 15.00,
+      "description": "Havregryn för gröt",
+      "category": "Torkade varor",
+      "brand": "Lantmännen"
+    }
+  ]
 }
