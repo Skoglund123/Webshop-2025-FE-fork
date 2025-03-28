@@ -55,5 +55,14 @@ export async function fetchProducts() {
   }
 }
 
-
+export async function fetchCategories() {
+  const url = 'http://localhost:5003/category';
+  try {
+    const response = await axios.get(url);
+    return response.data; // Array med alla kategorier
+  } catch (error) {
+    console.error('Fel vid hämtning av kategorier:', error);
+    return [];
+  }
+}
 // https://webshop-2025-be-g9.vercel.app/api/products
