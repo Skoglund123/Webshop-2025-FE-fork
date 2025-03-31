@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hakim Livs Varukorg</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="./src/scripts/cart.js" defer></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="site-header">
+        <nav>
+            <a href="index.html" class="logo">Hakim Livs</a>
+            <ul class="nav-links">
+                <li><a href="cart.html">Kundvagn (<span id="cart-item-count">0</span> produkter - <span id="cart-total-price">0.00</span> kr)</a></li>
+                <li><a href="login.html">Logga In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <h1>Varukorg</h1>
+        <div id="cart-items"></div>
+        <div class="cart-summary">
+            <p>Total: <span id="total-price">0.00 kr</span></p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Hakim Livs</p>
+        </div>
+    </footer>
+</body>
+</html>
