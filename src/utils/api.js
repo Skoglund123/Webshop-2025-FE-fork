@@ -66,3 +66,5 @@ export async function fetchCategories() {
   }
 }
 // https://webshop-2025-be-g9.vercel.app/api/products
+
+// mongodb+srv://skoglundfilip:Webshop-2025-BE-G9@webbshop-be-g9.bkfy1.mongodb.net/webbshop-be-g9
