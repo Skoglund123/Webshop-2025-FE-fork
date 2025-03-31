@@ -189,7 +189,7 @@ aside nav {
 .cart-item .item-details {
   display: flex;
   gap: 1rem;
-  flex: 1;
+  flex: 1; /* Allow the details to take as much space as possible */
 }
 
 .cart-item .item-details p {
@@ -204,8 +204,10 @@ aside nav {
   align-items: center;
 }
 
-.cart-item .item-actions .delete-item-btn {
-  background-color: #ff4444;
+/* ================= BUTTON STYLES ================= */
+.cart-item .item-actions .increase-item-btn,
+.cart-item .item-actions .decrease-item-btn {
+  background-color: var(--accent-color); /* Blue color for increase and decrease buttons */
   color: var(--white);
   border: none;
   border-radius: var(--border-radius);
@@ -215,28 +217,14 @@ aside nav {
   transition: background-color 0.3s;
 }
 
-.cart-item .item-actions .delete-item-btn:hover {
-  background-color: #d62c2c;
+.cart-item .item-actions .increase-item-btn:hover,
+.cart-item .item-actions .decrease-item-btn:hover {
+  background-color: #4b00c0; /* Darker blue for hover effect */
 }
-
-/* ================= CART SUMMARY ================= */
-.cart-summary {
-  margin-top: 2rem;
-  text-align: right;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.cart-summary span {
-  color: var(--primary-color);
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
 
 /* ================= DELETE BUTTON STYLING ================= */
 .delete-item-btn {
-  background-color: #ff4444;
+  background-color: var(--primary-color); /* Red color for delete button */
   color: var(--white);
   border: none;
   border-radius: var(--border-radius);
@@ -244,13 +232,13 @@ aside nav {
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s;
-  margin-top: 1rem;
-  display: inline-block;
+  margin-left: 1rem; /* Add some margin to separate it from other buttons */
 }
 
 .delete-item-btn:hover {
-  background-color: #d62c2c;
+  background-color: rgb(201, 0, 0); /* Darker red for hover effect */
 }
+
 
 /* ================= FOOTER ================= */
 .site-footer {
