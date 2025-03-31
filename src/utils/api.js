@@ -45,7 +45,7 @@
 //axios
 
 export async function fetchProducts() {
-  const url = 'http://localhost:5003/product';
+  const url = 'https://webshop-2025-be-g9.vercel.app/api/products';
   try {
     const response = await axios.get(url);
     return response.data;
@@ -56,7 +56,7 @@ export async function fetchProducts() {
 }
 
 export async function fetchCategories() {
-  const url = 'http://localhost:5003/category';
+  const url = 'https://webshop-2025-be-g9.vercel.app/api/products';
   try {
     const response = await axios.get(url);
     return response.data; // Array med alla kategorier
