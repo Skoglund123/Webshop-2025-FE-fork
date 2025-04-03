@@ -1,4 +1,4 @@
-import { fetchProducts } from "../utils/api.js";
+import { fetchProducts, searchProducts } from "../utils/api.js";
 
 let allProducts = [];              // Alla hämtade produkter
 let allCategories = [];            // Unika kategorier
@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("sort-select").addEventListener("change", () => {
     displayProducts(currentProductsDisplayed);
   });
-});
 
+  
 // Hämta och visa produkter
 async function loadProducts() {
   const productsContainer = document.getElementById("products");
@@ -60,7 +60,7 @@ function loadCategoriesFromProducts() {
       sidebarNav.innerHTML += "<p>Inga kategorier tillgängliga.</p>";
       return;
     }
-    
+
     // Skapa en knapp per kategori
     categories.forEach(categoryName => {
       const button = document.createElement("button");
@@ -132,13 +132,48 @@ function createProductCard(product) {
   const element = document.createElement("div");
   element.className = "product-card";
   element.innerHTML = `
-    <h3>${product.name}</h3>
-    <p>${product.price.toFixed(2)} kr</p>
-    <p>${product.description}</p>
-    <button class="add-to-cart-btn">Add to Cart</button>
+    <img src="${product.img}" alt="${product.name}" class="product-image" style="height: 160px;width: 160px;">
+    <div class="card-info">
+    
+      <h3 style="color:red;font-size: 30px;">${product.price.toFixed(2)} kr</h3>
+      <p>${product.name}</p>
+      <p style="font-size: 14px;">${product.brand}</p>
+      <button class="add-to-cart-btn">Köp</button>
+    </div>
   `;
   element.querySelector(".add-to-cart-btn").addEventListener("click", () => {
     alert(`Adding ${product.name} to cart\nFunctionality not implemented yet`);
   });
   return element;
 }
+
+const searchInput = document.getElementById("search-input");
+if (searchInput) {
+  const debounce = (func, delay = 100) => {
+    let timeout;
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func(...args), delay);
+    };
+  };
+
+  const handleSearch = (e) => {
+    const query = e.target.value.trim().toLowerCase();
+  
+    if (!query) {
+      displayProducts(allProducts); 
+      return;
+    }
+  
+    const results = allProducts.filter(product =>
+      product.name.toLowerCase().includes(query) ||
+      product.brand.toLowerCase().includes(query)
+    );
+  
+    displayProducts(results);
+  };
+  
+
+  searchInput.addEventListener("input", debounce(handleSearch, 100));
+}
+});

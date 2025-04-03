@@ -3,6 +3,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: #F7F7F7;
 }
 
 /* Använd grid för att placera header, sidebar, main och footer */
@@ -74,6 +75,12 @@ body {
   color: var(--primary-color);
 }
 
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
 /* ================= SIDEBAR ================= */
 aside {
   grid-area: sidebar;
@@ -121,22 +128,32 @@ aside nav {
 /* ================= PRODUKT-KORT ================= */
 #products {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, 220px);
   gap: 1.5rem;
+  justify-content: center;
 }
 
+
 .product-card {
+  width: 220px;
+  height: 390px;
   background-color: var(--white);
   border: 1px solid var(--light-gray);
   border-radius: var(--border-radius);
   padding: 1rem;
+  box-sizing: border-box;
   text-align: center;
   transition: box-shadow 0.3s, transform 0.3s;
+
+  display: flex;
+  flex-direction: column;
 }
 
+
 .product-card:hover {
-  transform: translateY(-3px);
+
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  cursor: pointer;
 }
 
 .product-card h3 {
@@ -144,6 +161,7 @@ aside nav {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-dark);
+  margin: 0px;
 }
 
 .product-card p {
@@ -151,10 +169,11 @@ aside nav {
   font-size: 1rem;
   color: var(--text-dark);
   font-weight: 500;
+  margin: 0px;
 }
 
 .product-card button {
-  background-color: var(--accent-color);
+  background-color: rgb(36, 38, 204);
   color: var(--white);
   border: none;
   border-radius: var(--border-radius);
@@ -166,7 +185,16 @@ aside nav {
 
 .product-card button:hover {
   background-color: #4b00c0;
+  transform: translateY(2px);
 }
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: auto; /* empuja este bloque al fondo */
+}
+
 
 /* ================= FOOTER ================= */
 .site-footer {
@@ -210,4 +238,31 @@ aside nav {
     border-right: none;
     border-bottom: 2px solid var(--light-gray);
   }
+}
+
+/* === Search bar styles === */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#search-input {
+  padding: 8px 16px;
+  font-size: 1rem;
+  border: 2.5px solid #ccc;
+  border-radius: 3px;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 600px;
+}
+
+#search-input:focus {
+  border-color: #001E62;
+  box-shadow: 0 0 5px rgba(36, 38, 204);
+}
+#search-input:hover {
+  border-color: #001E62;
+  box-shadow: 0 0 5px rgba(36, 38, 204);
 }
