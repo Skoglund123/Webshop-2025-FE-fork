@@ -167,7 +167,8 @@ if (searchInput) {
   
     const results = allProducts.filter(product =>
       product.name.toLowerCase().includes(query) ||
-      product.brand.toLowerCase().includes(query)
+      product.brand.toLowerCase().includes(query) 
+     
     );
   
     displayProducts(results);
