@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   await loadProducts();
   loadCategoriesFromProducts();
 
+  // Update the cart display when the page loads
+  updateCartDisplay();
+
   // Eventlyssnare för dropdownen
   document.getElementById("sort-select").addEventListener("change", () => {
     displayProducts(currentProductsDisplayed);
@@ -141,9 +144,37 @@ function createProductCard(product) {
       <button class="add-to-cart-btn">Köp</button>
     </div>
   `;
+
   element.querySelector(".add-to-cart-btn").addEventListener("click", () => {
-    alert(`Adding ${product.name} to cart\nFunctionality not implemented yet`);
+    // Get current cart from localStorage or create a new one if it doesn't exist
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Check if the product is already in the cart by its unique _id
+    const productInCart = cart.find(item => item.id === product._id);
+
+    if (productInCart) {
+      // If the product is already in the cart, increase the quantity
+      productInCart.quantity += 1;
+    } else {
+      // If the product is not in the cart, add it with quantity 1
+      cart.push({
+        id: product._id, // Use the _id from the API as the unique identifier
+        name: product.name,
+        price: product.price,
+        quantity: 1
+      });
+    }
+
+    // Save the updated cart back to localStorage (store the array of multiple products)
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Update the cart display in the header
+    updateCartDisplay();
+
+    // Optionally, give feedback to the user
+    alert(`${product.name} har lagts till i din kundvagn!`);
   });
+
   return element;
 }
 
@@ -178,3 +209,16 @@ if (searchInput) {
   searchInput.addEventListener("input", debounce(handleSearch, 100));
 }
 });
+// Update Cart Display
+function updateCartDisplay() {
+  // Get cart from localStorage
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // Calculate the number of items and total price
+  const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
+  const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
+
+  // Update the cart counter in the header
+  document.getElementById("cart-item-count").textContent = itemCount;
+  document.getElementById("cart-total-price").textContent = totalPrice;
+}
