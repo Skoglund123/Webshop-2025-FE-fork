@@ -151,8 +151,6 @@ aside nav {
 
 
 .product-card:hover {
-
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   cursor: pointer;
 }
 
@@ -175,16 +173,17 @@ aside nav {
 .product-card button {
   background-color: rgb(36, 38, 204);
   color: var(--white);
-  border: none;
-  border-radius: var(--border-radius);
+  border: solid black 2px;
+  border-radius: 3px;
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-size: 1rem;
+  font-style: italic;
   transition: background-color 0.3s;
 }
 
 .product-card button:hover {
-  background-color: #4b00c0;
+  background-color: rgb(36, 38, 204);
   transform: translateY(2px);
 }
 

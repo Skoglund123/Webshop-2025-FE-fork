@@ -170,9 +170,6 @@ function createProductCard(product) {
 
     // Update the cart display in the header
     updateCartDisplay();
-
-    // Optionally, give feedback to the user
-    alert(`${product.name} har lagts till i din kundvagn!`);
   });
 
   return element;
@@ -180,13 +177,6 @@ function createProductCard(product) {
 
 const searchInput = document.getElementById("search-input");
 if (searchInput) {
-  const debounce = (func, delay = 100) => {
-    let timeout;
-    return (...args) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func(...args), delay);
-    };
-  };
 
   const handleSearch = (e) => {
     const query = e.target.value.trim().toLowerCase();
@@ -197,8 +187,9 @@ if (searchInput) {
     }
   
     const results = allProducts.filter(product =>
-      product.name.toLowerCase().includes(query) ||
-      product.brand.toLowerCase().includes(query) 
+      product.name && product.name.toLowerCase().includes(query) ||
+      product.brand && product.brand.toLowerCase().includes(query) ||
+      product.category && product.category.toLowerCase().includes(query)
      
     );
   
@@ -206,7 +197,7 @@ if (searchInput) {
   };
   
 
-  searchInput.addEventListener("input", debounce(handleSearch, 100));
+  searchInput.addEventListener("input", handleSearch);
 }
 });
 // Update Cart Display
