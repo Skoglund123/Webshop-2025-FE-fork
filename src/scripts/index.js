@@ -1,4 +1,4 @@
-import { fetchProducts, searchProducts } from "../utils/api.js";
+import { fetchProducts, searchProducts, fetchCategories } from "../utils/api.js";
 
 let allProducts = [];              // Alla hämtade produkter
 let allCategories = [];            // Unika kategorier
@@ -7,7 +7,7 @@ let currentProductsDisplayed = []; // Produkter som för närvarande visas
 document.addEventListener("DOMContentLoaded", async () => {
   // Ladda produkter och kategorier
   await loadProducts();
-  loadCategoriesFromProducts();
+  await loadCategories();
 
   // Update the cart display when the page loads
   updateCartDisplay();
@@ -34,19 +34,13 @@ async function loadProducts() {
 }
 
 // Härled och visa kategorier i sidomenyn
-function loadCategoriesFromProducts() {
+async function loadCategories() {
   const sidebarNav = document.querySelector("aside nav");
   sidebarNav.innerHTML = "<p>Laddar kategorier...</p>";
 
   try {
     // Hämta unika kategorier
-    const categorySet = new Set();
-    allProducts.forEach(product => {
-      if (product.category) {
-        categorySet.add(product.category);
-      }
-    });
-    const categories = Array.from(categorySet);
+    const categories = await fetchCategories()
     allCategories = categories;
     sidebarNav.innerHTML = "";
 
@@ -65,12 +59,12 @@ function loadCategoriesFromProducts() {
     }
 
     // Skapa en knapp per kategori
-    categories.forEach(categoryName => {
+    categories.forEach(category => {
       const button = document.createElement("button");
       button.className = "category-button";
-      button.textContent = categoryName;
+      button.textContent = category.name;
       button.addEventListener("click", () => {
-        filterProductsByCategory(categoryName);
+        filterProductsByCategory(category._id);
       });
       sidebarNav.appendChild(button);
     });
@@ -81,8 +75,8 @@ function loadCategoriesFromProducts() {
 }
 
 // Filtrera produkter baserat på vald kategori
-function filterProductsByCategory(categoryName) {
-  const filtered = allProducts.filter(product => product.category === categoryName);
+function filterProductsByCategory(categoryId) {
+  const filtered = allProducts.filter(product => product.category === categoryId);
   displayProducts(filtered);
 }
 

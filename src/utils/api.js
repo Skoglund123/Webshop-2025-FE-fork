@@ -10,7 +10,7 @@ export async function fetchProducts() {
 }
 
 export async function fetchCategories() {
-  const url = 'https://webshop-2025-be-g9.vercel.app/api/products';
+  const url = 'https://webshop-2025-be-g9.vercel.app/api/category/';
   try {
     const response = await axios.get(url);
     return response.data;
