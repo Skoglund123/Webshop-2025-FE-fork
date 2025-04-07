@@ -1,3 +1,4 @@
+
 export async function fetchProducts() {
   const url = 'https://webshop-2025-be-g9.vercel.app/api/products';
   try {
@@ -28,5 +29,34 @@ export async function searchProducts(query) {
   } catch (error) {
     console.error('Fel vid sökning av produkter:', error);
     return [];
+  }
+}
+
+export async function fetchUser() {
+  const url = 'https://webshop-2025-be-g9.vercel.app/api/user/';
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error('Fel vid hämtning av User:', error);
+    return [];
+  }
+}
+
+export async function loginUser(email, password) {
+  const url = 'https://webshop-2025-be-g9.vercel.app/api/user/login/'
+  try {
+    const response = await axios.post(url, {
+      email,
+      password
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Fel vid hämtning av User:', error);
+    return error
   }
 }

@@ -1,10 +1,11 @@
 // services.js
 
 // --- Session / Auth helpers ---
-export const isAuthenticated = () => sessionStorage.getItem("loggedUser") !== null;
-
 export const ifNotAuthenticated = () => {
-    if (!isAuthenticated()) {
+    const token = getFromStorage("token", true)
+    console.log("token", token)
+    if (!token) {
+        removeFromStorage("token")
         window.location.href = "/auth/login.html";
         return false;
     }
@@ -18,12 +19,14 @@ export const getLoggedUserFromStorage = () => {
 
 export const logOutUser = () => {
     sessionStorage.clear();
+    removeFromStorage("token")
     window.location.href = "/index.html";
 };
 
 // --- LocalStorage helpers ---
-export const getFromStorage = (key) => {
+export const getFromStorage = (key, isString = false) => {
     const data = localStorage.getItem(key);
+    if(isString) return data
     return data ? JSON.parse(data) : [];
 };
 
@@ -31,14 +34,9 @@ export const saveToStorage = (key, value) => {
     localStorage.setItem(key, JSON.stringify(value));
 };
 
-// HIDE PASSWORD
-export const hashPassword = async (password) => {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(password);
-    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
-};
+export const removeFromStorage = (key) => {
+    localStorage.removeItem(key)
+}
 
 
 export const generateRandomUUID = () => {
