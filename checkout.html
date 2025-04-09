@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hakim Livs Varukorg</title>
+    <title>Hakim Livs Checkout</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="module" src="./src/scripts/cart.js" defer></script>
+    <script type="module" src="./src/scripts/checkout.js" defer></script>
 </head>
 <body>
     <!-- HEADER -->
@@ -23,12 +23,23 @@
     </header>
 
     <main class="main-content">
-        <h1>Varukorg</h1>
         <div id="cart-items"></div>
-        <div class="cart-summary">
-            <p>Total: <span id="total-price">0.00 kr</span></p>
+
+        <div id="total">
+            <strong>Totalt:</strong> <span id="total-price">0 kr</span>
         </div>
-        <a href="checkout.html" class="go-to-checkout">Gå till kassan</a>
+        <h2>Dina uppgifter</h2>
+        <form id="order-form" novalidate>
+            <input type="text" id="first-name" placeholder="Förnamn" required>
+            <input type="text" id="last-name" placeholder="Efternamn" required>
+            <input type="text" id="address" placeholder="Gatuadress" required>
+            <input type="text" id="postal-code" placeholder="Postnummer" pattern="^[0-9]{5}$" required>
+            <input type="text" id="city" placeholder="Postort" required>
+            <input type="email" id="email" placeholder="E-post" required>
+            <input type="tel" id="phone" placeholder="Telefonnummer" pattern="^(\+46|0)[0-9]{7,13}$" required>
+            <button type="submit" class="btn-checkout">Beställ</button>
+        </form>
+        <div id="confirmation"></div>
     </main>
 
     <!-- FOOTER -->

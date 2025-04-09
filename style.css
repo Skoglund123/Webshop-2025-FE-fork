@@ -461,3 +461,82 @@ aside nav {
   border-color: #001E62;
   box-shadow: 0 0 5px rgba(36, 38, 204);
 }
+
+/* === FORM INPUT & VALIDATION  === */
+input.valid {
+  border: 2px solid #28a745;
+  outline: none;
+}
+
+input.invalid {
+  border: 2px solid var(--primary-color);
+  outline: none;
+  background-color: #fff0f0;
+}
+
+.error-msg {
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--light-gray);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  background-color: #fff;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(110, 0, 243, 0.15);
+  outline: none;
+}
+
+input:hover {
+  border-color: var(--accent-color);
+}
+
+/* === GÅ TILL KASSAN-btn (cart.html) === */
+.go-to-checkout {
+  background-color: rgb(36, 38, 204);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s, transform 0.2s ease;
+}
+
+.go-to-checkout:hover {
+  background-color: rgb(9, 11, 116);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* === ORDER BUTTON (checkout) === */
+.btn-checkout {
+  background-color: var(--accent-color);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s ease;
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+}
