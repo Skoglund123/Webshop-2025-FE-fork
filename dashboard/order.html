@@ -68,11 +68,33 @@
     </div>
     <!-- Här slutar sidebar -->
 
-    <div id="order-list">
-        <!-- Ordrar hamnar dynamiskt här -->
-
-    </div>
-
+    
+    <!-- Huvudinnehåll -->
+    <div class="container mt-4">
+        <h1>Beställningar</h1>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Order</th>
+                <th>Kund</th>
+                <th>Kontakt</th>
+                <th>Adress</th>
+                <th>Total</th>
+                <th>Datum</th>
+                <th>Status</th>
+                <th>Åtgärder</th>
+              </tr>
+            </thead>
+            <tbody id="order-list">
+              <!-- Orderrader genereras dynamiskt -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </body>
+  </html>
     
 
   </main>
