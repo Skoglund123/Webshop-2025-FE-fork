@@ -1,5 +1,5 @@
-import { getLoggedUserFromStorage, hashPassword, getFromStorage } from "./services.js";
-import { User } from "./user.js";
+import { loginUser } from "../src/utils/api.js";
+import { saveToStorage } from "./services.js";
 
 const loginButton = document.getElementById("btn-login");
 const error = document.getElementById("error");
@@ -13,18 +13,15 @@ const login = async () => {
         return;
     }
 
-    const hashedPassword = await hashPassword(password);
-    const usersList = getFromStorage("Users");
-
-    const user = usersList.find(user => user.email === email && user.password === hashedPassword);
-
-    if (user) {
-        sessionStorage.setItem("loggedUser", JSON.stringify(new User(user.id, user.firstName, user.lastName, user.email)));
-        error.textContent = "";
-        window.location.href = "/dashboard/index.html";
-    } else {
-        error.textContent = "Incorrect email or password. Please try again!";
+    const response = await loginUser(email, password)
+    if(response.message){ //is error
+        return
     }
+    
+    saveToStorage("token", response.token)
+    window.location.href = "/dashboard/index.html";
+
+    console.log(response)
 };
 
 if (loginButton) {
