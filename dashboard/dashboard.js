@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
  
   // Måste läggas till
-  const logoutButton = document.getElementById("btn-logout");
+  const logoutButton = document.getElementById("logout");
   if (logoutButton) {
     logoutButton.addEventListener("click", logOutUser);
   }
