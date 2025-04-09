@@ -1,8 +1,13 @@
-import { ifNotAuthenticated } from "../auth/services.js";
+import { ifNotAuthenticated, logOutUser } from "../auth/services.js";
 import { fetchProducts, fetchCategories } from "../src/utils/api.js";
 
 window.addEventListener("DOMContentLoaded", async () => {
   ifNotAuthenticated();
+
+  const logoutButton = document.getElementById("logout");
+  if (logoutButton) {
+    logoutButton.addEventListener("click", logOutUser);
+  }
 
   try {
     const [products, categories] = await Promise.all([
