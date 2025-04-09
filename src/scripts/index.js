@@ -179,11 +179,15 @@ async function showProductDetailsPopup(product) {
       <span class="close-btn">&times;</span>
       <img src="${product.img}" alt="${product.name}" class="product-image" style="height: 160px;width: 160px;">
       <h3>${product.name}</h3>
-      <p>Varumärke: ${product.brand}</p>
-      <p>Kategori: ${categoryName} (ID: ${categoryId})</p>
-      <p>Produkt ID: ${product._id}</p>
-      <p>Produktbeskrivning: ${product.description}.</p>
-      <p><strong>${product.price.toFixed(2)} kr</strong></p>
+      <p><strong>Varumärke:</strong> ${product.brand}</p>
+      <p><strong>Volym:</strong> ${product.quantity}</p>
+      <p><strong>Produktkategori:</strong> ${categoryName} (ID: ${categoryId})</p>
+      <p><strong>Produkt ID:</strong> ${product._id}</p>
+      <p><strong>Produktinformation:</strong> ${product.description}.</p>
+      <p><strong>Ingredienser:</strong> ${product.ingredients}</p>
+      <p><strong>Näringsinnehåll:</strong> ${product.nutrition}</p>
+      <p><strong>Tillänglighet i lager:</strong> ${product.stock}</p>
+      <p><strong>${product.price.toFixed(2)} kr</strong> (Jämförpris: ${product.comparePrice})</p>
       <button class="add-to-cart-btn">Köp</button>
     `;
 
