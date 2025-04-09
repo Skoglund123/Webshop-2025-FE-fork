@@ -163,7 +163,7 @@ async function showProductDetailsPopup(product) {
   try {
     const categories = await fetchCategories();
 
-    const category = categories.find(c => c._name === product.category);
+    const category = categories.find(c => c._id === product.category);
 
     if (!category) {
       console.log("Category not found for the product.");
