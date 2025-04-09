@@ -124,6 +124,96 @@ function displayProducts(products) {
   });
 }
 
+// Function to add product to the cart (Reusable)
+function addToCart(product) {
+  // Get the current cart from localStorage or initialize an empty array
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // Check if the product is already in the cart
+  const productInCart = cart.find(item => item.id === product._id);
+
+  if (productInCart) {
+    // If the product is already in the cart, increase the quantity
+    productInCart.quantity += 1;
+  } else {
+    // If the product is not in the cart, add it with quantity 1
+    cart.push({
+      id: product._id, // Use the _id from the API as the unique identifier
+      name: product.name,
+      price: product.price,
+      quantity: 1
+    });
+  }
+
+  // Save the updated cart back to localStorage
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  // Update the cart display in the header
+  updateCartDisplay();
+}
+
+// Popup Produktkort
+async function showProductDetailsPopup(product) {
+  const popup = document.createElement("div");
+
+  // Overlay
+  const overlay = document.createElement("div");
+  overlay.className = "popup-overlay";
+
+  try {
+    const categories = await fetchCategories();
+
+    const category = categories.find(c => c._name === product.category);
+
+    if (!category) {
+      console.log("Category not found for the product.");
+    }
+
+    const categoryName = category ? category.name : "Unknown Category";
+    const categoryId = category ? category._id : "N/A";
+
+    // Popup innehåll
+    const popupContent = document.createElement("div");
+    popupContent.className = "product-popup";
+    popupContent.innerHTML = `
+      <span class="close-btn">&times;</span>
+      <img src="${product.img}" alt="${product.name}" class="product-image" style="height: 160px;width: 160px;">
+      <h3>${product.name}</h3>
+      <p>Varumärke: ${product.brand}</p>
+      <p>Kategori: ${categoryName} (ID: ${categoryId})</p>
+      <p>Produkt ID: ${product._id}</p>
+      <p>Produktbeskrivning: ${product.description}.</p>
+      <p><strong>${product.price.toFixed(2)} kr</strong></p>
+      <button class="add-to-cart-btn">Köp</button>
+    `;
+
+    document.body.appendChild(overlay);
+    document.body.appendChild(popupContent);
+
+    // Köp knapp
+    const addToCartButton = popupContent.querySelector(".add-to-cart-btn");
+    addToCartButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      addToCart(product);
+    });
+
+    // Stäng knapp
+    popupContent.querySelector(".close-btn").addEventListener("click", () => {
+      overlay.remove();
+      popupContent.remove();
+    });
+
+    // Stäng med overlay
+    overlay.addEventListener("click", () => {
+      overlay.remove();
+      popupContent.remove();
+    });
+
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+  }
+}
+
 // Skapa ett produktkort
 function createProductCard(product) {
   const element = document.createElement("div");
@@ -131,7 +221,6 @@ function createProductCard(product) {
   element.innerHTML = `
     <img src="${product.img}" alt="${product.name}" class="product-image" style="height: 160px;width: 160px;">
     <div class="card-info">
-    
       <h3 style="color:red;font-size: 30px;">${product.price.toFixed(2)} kr</h3>
       <p>${product.name}</p>
       <p style="font-size: 14px;">${product.brand}</p>
@@ -139,35 +228,30 @@ function createProductCard(product) {
     </div>
   `;
 
-  element.querySelector(".add-to-cart-btn").addEventListener("click", () => {
-    // Get current cart from localStorage or create a new one if it doesn't exist
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  // Handle the "Add to Cart" button click in the product card
+  const addToCartButton = element.querySelector(".add-to-cart-btn");
+  addToCartButton.addEventListener("click", (event) => {
+    // Prevent the click from triggering the popup by stopping the event propagation
+    event.stopPropagation(); 
 
-    // Check if the product is already in the cart by its unique _id
-    const productInCart = cart.find(item => item.id === product._id);
+    // Add the product to the cart
+    addToCart(product);
 
-    if (productInCart) {
-      // If the product is already in the cart, increase the quantity
-      productInCart.quantity += 1;
-    } else {
-      // If the product is not in the cart, add it with quantity 1
-      cart.push({
-        id: product._id, // Use the _id from the API as the unique identifier
-        name: product.name,
-        price: product.price,
-        quantity: 1
-      });
-    }
-
-    // Save the updated cart back to localStorage (store the array of multiple products)
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    // Update the cart display in the header
+    // Optionally update the cart display
     updateCartDisplay();
+  });
+
+  // Eventlistener for showing the popup (only for clicks on the product card itself, not the button)
+  element.addEventListener("click", (event) => {
+    // Only show the popup if the click wasn't on the "Add to Cart" button
+    if (!event.target.closest(".add-to-cart-btn")) {
+      showProductDetailsPopup(product); // Pass the product to the popup function
+    }
   });
 
   return element;
 }
+
 
 const searchInput = document.getElementById("search-input");
 if (searchInput) {
