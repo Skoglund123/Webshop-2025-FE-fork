@@ -1,3 +1,5 @@
+import axios from 'https://cdn.jsdelivr.net/npm/axios@1.6.8/+esm';
+
 
 export async function fetchProducts() {
   const url = 'https://webshop-2025-be-g9.vercel.app/api/products';
@@ -12,6 +14,17 @@ export async function fetchProducts() {
 
 export async function fetchCategories() {
   const url = 'https://webshop-2025-be-g9.vercel.app/api/category/';
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error('Fel vid hämtning av kategorier:', error);
+    return [];
+  }
+}
+
+export async function fetchOrders() {
+  const url = 'https://webshop-2025-be-g9.vercel.app/api/orders/';
   try {
     const response = await axios.get(url);
     return response.data;
