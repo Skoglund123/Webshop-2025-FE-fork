@@ -9,7 +9,7 @@ const login = async () => {
     const password = document.getElementById("login-password").value;
 
     if (!email || !password) {
-        error.textContent = "Please fill in both email and password.";
+        error.textContent = "Vänligen fyll i både e-postadress och lösenord.";
         return;
     }
 

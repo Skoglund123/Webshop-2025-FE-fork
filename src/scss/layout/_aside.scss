@@ -1,0 +1,27 @@
+aside {
+    grid-area: sidebar;
+    padding: 1.5rem;
+    flex: 0 0 220px;
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+  
+  .category-button {
+    border: none;
+    background-color: transparent;
+    padding: 0.75rem;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666666;
+    width: 100%;
+  
+    &:hover {
+      background-color: white;
+      color: #001965;
+    }
+  }

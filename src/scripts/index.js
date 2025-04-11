@@ -183,11 +183,11 @@ async function showProductDetailsPopup(product) {
       <p><strong>Volym:</strong> ${product.quantity}</p>
       <p><strong>Produktkategori:</strong> ${categoryName} (ID: ${categoryId})</p>
       <p><strong>Produkt ID:</strong> ${product._id}</p>
-      <p><strong>Produktinformation:</strong> ${product.description}.</p>
+      <p><strong>Produktinformation:</strong> ${product.description}</p>
       <p><strong>Ingredienser:</strong> ${product.ingredients}</p>
       <p><strong>Näringsinnehåll:</strong> ${product.nutrition}</p>
-      <p><strong>Tillänglighet i lager:</strong> ${product.stock}</p>
-      <p><strong>${product.price.toFixed(2)} kr</strong> (Jämförpris: ${product.comparePrice})</p>
+      <p><strong>Tillgänglighet i lager:</strong> ${product.stock} st</p>
+      <p><strong  style="color:red">${product.price.toFixed(2)} kr</strong> (Jämförpris: ${product.comparePrice})</p>
       <button class="add-to-cart-btn">Köp</button>
     `;
 
@@ -225,9 +225,9 @@ function createProductCard(product) {
   element.innerHTML = `
     <img src="${product.img}" alt="${product.name}" class="product-image" style="height: 160px;width: 160px;">
     <div class="card-info">
-      <h3 style="color:red;font-size: 30px;">${product.price.toFixed(2)} kr</h3>
+      <h3>${product.price.toFixed(2)} :-</h3>
       <p>${product.name}</p>
-      <p style="font-size: 14px;">${product.brand}</p>
+      <p style="font-size: 12px;">${product.brand} | ${product.quantity}</p>
       <button class="add-to-cart-btn">Köp</button>
     </div>
   `;
