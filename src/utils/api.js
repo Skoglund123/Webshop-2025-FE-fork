@@ -97,3 +97,14 @@ export async function editProductDashboard(productId, updatedData) {
     return [];
   }
 }
+
+export async function createOrder(order) {
+  const url = 'https://webshop-2025-be-g9.vercel.app/api/orders';
+  try {
+    const response = await axios.post(url, order);
+    return response.data;
+  } catch (error) {
+    console.error('Fel vid skapande av order:', error);
+    throw error;
+  }
+}
