@@ -1,5 +1,5 @@
 import { ifNotAuthenticated, logOutUser } from "../auth/services.js";
-import { fetchProducts, fetchCategories } from "../src/utils/api.js";
+import { fetchProducts, fetchCategories, deleteProductDashboard } from "../src/utils/api.js";
 
 window.addEventListener("DOMContentLoaded", async () => {
   ifNotAuthenticated();
@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       fetchCategories()
     ]);
 
-    // lookup for categoryname
+    
     const categoryLookup = {};
     categories.forEach(cat => {
       categoryLookup[cat._id] = cat.name;
@@ -31,7 +31,7 @@ function renderProducts(products, categoryLookup) {
   const list = document.getElementById("products-body");
 
   if (!products || products.length === 0) {
-    list.innerHTML = "<tr><td colspan='6'>Inga produkter hittades</td></tr>";
+    list.innerHTML = "<tr><td colspan='8'>Inga produkter hittades</td></tr>";
     return;
   }
 
@@ -56,10 +56,24 @@ function renderProducts(products, categoryLookup) {
       <td>${categoryName}</td>
       <td>
         <button class="btn btn-sm btn-primary">Redigera</button>
-        <button class="btn btn-sm btn-danger">Ta bort</button>
+        <button class="btn btn-sm btn-danger delete-btn" data-id="${p._id}">Ta bort</button>
       </td>
     `;
 
     list.append(row);
+
+    const deleteBtn = row.querySelector(".delete-btn");
+    deleteBtn.addEventListener("click", async () => {
+      if (confirm('Är du säker på att du vill ta bort produkten?')) {
+        try {
+          const result = await deleteProductDashboard(p._id);
+          row.remove();
+          alert("Produkten togs bort!");
+        } catch (error) {
+          console.error("Fel vid borttagning av produkt:", error);
+          alert("Kunde inte ta bort produkten.");
+        }
+      }
+    });
   });
 }

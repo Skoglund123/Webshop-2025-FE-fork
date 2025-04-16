@@ -73,3 +73,15 @@ export async function loginUser(email, password) {
     return error
   }
 }
+
+
+export async function deleteProductDashboard(productId) {
+  const url = `https://webshop-2025-be-g9.vercel.app/api/products/${productId}`;
+  try {
+    const response = await axios.delete(url);
+    return response.data;
+  } catch (error) {
+    console.error('Fel vid borttagning av produkt:', error);
+    return [];
+  }
+}

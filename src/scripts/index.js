@@ -181,8 +181,7 @@ async function showProductDetailsPopup(product) {
       <h3>${product.name}</h3>
       <p><strong>Varumärke:</strong> ${product.brand}</p>
       <p><strong>Volym:</strong> ${product.quantity}</p>
-      <p><strong>Produktkategori:</strong> ${categoryName} (ID: ${categoryId})</p>
-      <p><strong>Produkt ID:</strong> ${product._id}</p>
+      <p><strong>Produktkategori:</strong> ${categoryName}</p>
       <p><strong>Produktinformation:</strong> ${product.description}</p>
       <p><strong>Ingredienser:</strong> ${product.ingredients}</p>
       <p><strong>Näringsinnehåll:</strong> ${product.nutrition}</p>
