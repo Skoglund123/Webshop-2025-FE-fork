@@ -224,7 +224,7 @@ function createProductCard(product) {
   element.innerHTML = `
     <img src="${product.img}" alt="${product.name}" class="product-image" style="height: 160px;width: 160px;">
     <div class="card-info">
-      <h3>${product.price.toFixed(2)} :-</h3>
+      <h3>${product.price.toFixed(2).replace(".", ",")} kr</h3>
       <p>${product.name}</p>
       <p style="font-size: 12px;">${product.brand} | ${product.quantity}</p>
       <button class="add-to-cart-btn">Köp</button>
