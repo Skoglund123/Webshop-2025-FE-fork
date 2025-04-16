@@ -85,3 +85,15 @@ export async function deleteProductDashboard(productId) {
     return [];
   }
 }
+
+
+export async function editProductDashboard(productId, updatedData) {
+  const url = `https://webshop-2025-be-g9.vercel.app/api/products/${productId}`;
+  try {
+    const response = await axios.put(url, updatedData);
+    return response.data;
+  } catch (error) {
+    console.error('Fel vid uppdatering av produkt:', error);
+    return [];
+  }
+}

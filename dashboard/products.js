@@ -1,5 +1,5 @@
 import { ifNotAuthenticated, logOutUser } from "../auth/services.js";
-import { fetchProducts, fetchCategories, deleteProductDashboard } from "../src/utils/api.js";
+import { fetchProducts, fetchCategories, deleteProductDashboard, editProductDashboard } from "../src/utils/api.js";
 
 window.addEventListener("DOMContentLoaded", async () => {
   ifNotAuthenticated();
@@ -40,8 +40,8 @@ function renderProducts(products, categoryLookup) {
   products.forEach(p => {
     const row = document.createElement("tr");
 
-    const image = p.img && p.img.trim() !== "" 
-      ? p.img 
+    const image = p.img && p.img.trim() !== ""
+      ? p.img
       : "https://dummyimage.com/60x60/000000/fff&text=bild+saknas";
 
     const categoryName = categoryLookup[p.category] || "Okänd";
@@ -55,24 +55,49 @@ function renderProducts(products, categoryLookup) {
       <td>${p.stock} st</td>
       <td>${categoryName}</td>
       <td>
-        <button class="btn btn-sm btn-primary">Redigera</button>
+        <button class="btn btn-sm btn-primary edit-btn" data-id="${p._id}">Redigera</button>
         <button class="btn btn-sm btn-danger delete-btn" data-id="${p._id}">Ta bort</button>
       </td>
     `;
 
     list.append(row);
 
+   
     const deleteBtn = row.querySelector(".delete-btn");
     deleteBtn.addEventListener("click", async () => {
       if (confirm('Är du säker på att du vill ta bort produkten?')) {
         try {
-          const result = await deleteProductDashboard(p._id);
+          await deleteProductDashboard(p._id);
           row.remove();
           alert("Produkten togs bort!");
         } catch (error) {
           console.error("Fel vid borttagning av produkt:", error);
           alert("Kunde inte ta bort produkten.");
         }
+      }
+    });
+
+    
+    const editBtn = row.querySelector(".edit-btn");
+    editBtn.addEventListener("click", async () => {
+      const newPriceStr = prompt("Ange nytt pris för produkten:", p.price);
+      if (newPriceStr === null) return; 
+      const newPrice = parseFloat(newPriceStr);
+      if (isNaN(newPrice) || newPrice < 0) {
+        alert("Ogiltigt pris.");
+        return;
+      }
+      
+      const updatedData = { price: newPrice };
+
+      try {
+        const updatedProduct = await editProductDashboard(p._id, updatedData);
+        
+        row.children[4].textContent = updatedProduct.price + " kr";
+        alert("Produkten uppdaterades!");
+      } catch (error) {
+        console.error("Fel vid uppdatering av produkt:", error);
+        alert("Kunde inte uppdatera produkten.");
       }
     });
   });
