@@ -1,27 +1,35 @@
 import { fetchOrders } from '../src/utils/api.js';
 
+
 document.addEventListener("DOMContentLoaded", () => {
   const orderListContainer = document.getElementById("order-list");
   const statusOptions = ['ny', 'betald', 'packad', 'levererad'];
 
+
   async function loadOrders() {
     try {
       const orders = await fetchOrders();
+
 
       if (!orders || orders.length === 0) {
         orderListContainer.innerHTML = "<tr><td colspan='8'>Inga ordrar hittades.</td></tr>";
         return;
       }
 
-      orders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); 
-      orderListContainer.innerHTML = ''; 
+
+      orders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      orderListContainer.innerHTML = '';
+
 
       orders.forEach((order, index) => {
         const orderStatus = order.status || 'ny';
         const customer = order;
         const products = order.products || [];
 
+
         const total = products.reduce((sum, product) => sum + product.productId.price * product.quantity, 0);
+        order.total = total; // Sätt total direkt på ordern
+
 
         const row = document.createElement("tr");
         row.innerHTML = `
@@ -43,20 +51,28 @@ document.addEventListener("DOMContentLoaded", () => {
             </select>
           </td>
           <td>
-            <button class="btn btn-sm btn-info me-1" onclick="printOrder(${index}, ${JSON.stringify(order)})">
+            <button class="btn btn-sm btn-info me-1 print-btn">
               <i class="fa-solid fa-print"></i> Skriv ut
             </button>
           </td>
         `;
 
-        // Add event listener for status changes
+
         const statusSelect = row.querySelector(`#status-${index}`);
         statusSelect.addEventListener("change", function () {
           updateOrderStatus(index, statusSelect.value);
         });
 
+
+        const printBtn = row.querySelector(".print-btn");
+        printBtn.addEventListener("click", () => {
+          window.printOrder(index, order);
+        });
+
+
         orderListContainer.appendChild(row);
       });
+
 
     } catch (error) {
       console.error("Error fetching orders:", error);
@@ -64,28 +80,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+
   async function updateOrderStatus(index, newStatus) {
     const orders = JSON.parse(localStorage.getItem("orders")) || [];
     const order = orders[index];
 
+
     if (!order) {
-        console.error("Order not found");
-        return;
+      console.error("Order not found");
+      return;
     }
+
 
     order.status = newStatus;
     localStorage.setItem("orders", JSON.stringify(orders));
 
-    try {
-        const response = await axios.put(`https://webshop-2025-be-g9.vercel.app/api/orders/${_id}`, {
-            status: newStatus,
-        });
 
+    try {
+      await axios.put(`https://webshop-2025-be-g9.vercel.app/api/orders/${order._id}`, {
+        status: newStatus,
+      });
     } catch (error) {
-        order.status = order.status || 'ny';
-        localStorage.setItem("orders", JSON.stringify(orders));
+      console.error("Kunde inte uppdatera orderstatus:", error);
     }
-}
+  }
+
 
   window.printOrder = function (index, order) {
     if (order) {
@@ -106,12 +125,19 @@ document.addEventListener("DOMContentLoaded", () => {
         <p><strong>Status:</strong> ${order.status || 'ny'}</p>
       `;
 
-      const printWindow = window.open('', '', 'width=600,height=400');
-      printWindow.document.write(orderContent);
+
+      const printWindow = window.open('', '', 'width=600,height=600');
+      printWindow.document.write(`
+        <html>
+          <head><title>Orderutskrift</title></head>
+          <body>${orderContent}</body>
+        </html>
+      `);
       printWindow.document.close();
       printWindow.print();
     }
-  }
+  };
+
 
   loadOrders();
 });
