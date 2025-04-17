@@ -186,7 +186,7 @@ async function showProductDetailsPopup(product) {
       <p><strong>Ingredienser:</strong> ${product.ingredients}</p>
       <p><strong>Näringsinnehåll:</strong> ${product.nutrition}</p>
       <p><strong>Tillgänglighet i lager:</strong> ${product.stock} st</p>
-      <p><strong  style="color:red">${product.price.toFixed(2)} kr</strong> (Jämförpris: ${product.comparePrice})</p>
+      <p><strong  style="color:red">${product.price.toFixed(2).replace(".", ",")} kr</strong> (Jämförpris: ${product.comparePrice})</p>
       <button class="add-to-cart-btn">Köp</button>
     `;
 
@@ -288,7 +288,7 @@ function updateCartDisplay() {
 
   // Calculate the number of items and total price
   const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
-  const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
+  const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2).replace(".", ",");
 
   // Update the cart counter in the header
   document.getElementById("cart-item-count").textContent = itemCount;

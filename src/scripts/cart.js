@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
       itemElement.innerHTML = `
         <div class="cart-item-details">
           <h3>${item.name}</h3>
-          <p>${item.price.toFixed(2)} kr</p>
+          <p>${item.price.toFixed(2).replace(".", ",")} kr</p>
           <p>Antal: <span class="item-quantity">${item.quantity}</span></p>
         </div>
         <div class="item-actions">
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // Update total price
   function updateTotalPrice(cart) {
-    const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
+    const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2).replace(".", ",")
     document.getElementById("total-price").textContent = `${totalPrice} kr`;
   }
   
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     
     const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
-    const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
+    const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2).replace(".", ",")
   
     document.getElementById("cart-item-count").textContent = itemCount;
     document.getElementById("cart-total-price").textContent = totalPrice;

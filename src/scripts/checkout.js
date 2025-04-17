@@ -52,15 +52,15 @@ function removeError(input) {
 
         div.innerHTML = `
           <strong>${item.name}</strong><br>
-          Pris: ${item.price.toFixed(2)} kr<br>
+          Pris: ${item.price.toFixed(2).replace(".", ",")} kr<br>
           Antal: ${item.quantity}<br>
-          Summa: ${itemTotal.toFixed(2)} kr
+          Summa: ${itemTotal.toFixed(2).replace(".", ",")} kr
         `;
 
         cartContainer.append(div);
       });
 
-      document.getElementById("total-price").textContent = total.toFixed(2) + " kr";
+      document.getElementById("total-price").textContent = total.toFixed(2).replace(".", ",") + " kr";
     }
 
     document.getElementById("order-form").addEventListener("submit", function (e) {
