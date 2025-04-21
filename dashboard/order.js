@@ -23,8 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const customer = order;
         const products = order.products || [];
 
+        // Beräkna total, hantera null eller saknade priser och kvantiteter
         const total = products.reduce(
-          (sum, product) => sum + product.productId.price * product.quantity,
+          (sum, product) =>
+            sum +
+            (product.productId?.price ?? 0) *
+            (product.quantity ?? 0),
           0
         );
         order.total = total;
@@ -61,13 +65,13 @@ document.addEventListener("DOMContentLoaded", () => {
           </td>
         `;
 
-        // Statusändring
+        
         const statusSelect = row.querySelector(`#status-${index}`);
         statusSelect.addEventListener("change", function () {
           updateOrderStatus(order._id, statusSelect.value);
         });
 
-        // Skriv ut
+        
         const printBtn = row.querySelector(".print-btn");
         printBtn.addEventListener("click", () => {
           printOrder(index, order);
