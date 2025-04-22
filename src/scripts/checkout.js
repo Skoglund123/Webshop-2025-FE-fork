@@ -118,10 +118,17 @@ document.getElementById("order-form").addEventListener("submit", async function 
     cartContainer.innerHTML = "";
     document.getElementById("total-price").textContent = "0 kr";
 
+    let total = 0;
+    cart.forEach(item => {
+    total += item.price * item.quantity;
+    });
+
+    const formattedTotal = total.toFixed(2).replace('.', ',');
+
     const conf = document.getElementById("confirmation");
     conf.innerHTML = `
       <h3>Tack för din beställning, ${order.firstName}!</h3>
-      <p>Vi sms:ar innan leverans. Vänligen betala med swish i förskott.</p>
+      <p>Vi sms:ar innan leverans. Vänligen betala ${formattedTotal + " kr"} med swish i förskott till nr: 0707070707.</p>
     `;
     conf.style.display = "block";
   } catch (err) {
